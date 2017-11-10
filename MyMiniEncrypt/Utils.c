@@ -578,3 +578,17 @@ void DecodeData(__in PVOID buff, __in PVOID outbuff, __in LONGLONG offset, __in 
 	RC4(indata, outdata, offset, len, key);
 	//XOR(indata,outdata,len,key);
 }
+
+//往缓冲区写入文件尾
+void WriteEncryptTrail(PVOID buff, ULONG offset)
+{
+	CHAR mark[128];
+
+	RtlZeroMemory(mark, ENCRYPT_MARK_LEN);
+
+	RtlCopyMemory((PVOID)mark, ENCRYPT_MARK_STRING, strlen(ENCRYPT_MARK_STRING));
+
+	PCHAR c = (PCHAR)buff;
+
+	RtlCopyMemory((PVOID)(&(c[offset])), (PVOID)mark, ENCRYPT_MARK_LEN);
+}

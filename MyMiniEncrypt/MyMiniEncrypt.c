@@ -780,7 +780,7 @@ _Flt_CompletionContext_Outptr_ PVOID *CompletionContext
 	NTSTATUS status;
 	PVOID newBuf = NULL;
 	PMDL newMdl = NULL;
-	PPRE_2_POST_CONTEXT p2pCtx;
+	PPRE_2_POST_CONTEXT p2pCtx = NULL;
 	ULONG readLen = iopb->Parameters.Read.Length;
 
 	//ºÏ≤È÷–∂œº∂
@@ -1325,6 +1325,7 @@ clean_res:
 		DbgPrint("exception happened in MyPreWrite");
 	}
 
+	return retValue;
 }
 
 FLT_POSTOP_CALLBACK_STATUS

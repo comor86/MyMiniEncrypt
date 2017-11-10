@@ -28,5 +28,7 @@ void EncryptData(__in PVOID buff, __in PVOID outbuff, __in LONGLONG offset, __in
 
 void DecodeData(__in PVOID buff, __in PVOID outbuff, __in LONGLONG offset, __in ULONG len, PCHAR key);
 
+void WriteEncryptTrail(PVOID buff, ULONG offset);
+
 
 #endif
